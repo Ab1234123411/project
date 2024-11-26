@@ -168,30 +168,105 @@
 
     /* Modal Styling */
     .modal-content {
-    background-color: #fdfdfd; /* Clean white */
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle modal shadow */
+    background-color: #ffffff; /* Clean white background */
+    border-radius: 16px; /* Rounded corners for a modern look */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Strong shadow for depth */
+    padding: 20px; /* Inner padding for spacing */
+    border: none; /* Remove border */
     }
 
     .modal-header {
-    background: #34495e; /* Match navbar */
-    color: white;
-    border-bottom: none;
-    font-weight: bold;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    background: #34495e; /* Subtle blue gradient */
+    color: #e7ebee; /* White text */
+    font-size: 1.5rem; /* Slightly larger title */
+    font-weight: bold; /* Bold for emphasis */
+    border-bottom: none; /* Remove default border */
+    border-top-left-radius: 16px; /* Rounded corners match modal */
+    border-top-right-radius: 16px;
+    }
+
+    .modal-header .btn-close {
+    color: #ffffff; /* White close button icon */
+    opacity: 0.8; /* Slightly transparent */
+    }
+
+    .modal-header .btn-close:hover {
+    opacity: 1; /* Full opacity on hover */
+    }
+
+    .modal-body {
+    color: #333333; /* Darker text for readability */
+    font-size: 1rem; /* Standard font size */
+    line-height: 1.5; /* Improved spacing */
+    }
+
+    .modal-body label {
+    font-weight: bold; /* Bold labels for clarity */
+    color: #555555; /* Subtle gray for contrast */
+    margin-top: 10px; /* Spacing between labels */
+    }
+
+    .modal-body input {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Inner spacing for inputs */
+    margin-bottom: 15px; /* Spacing between fields */
+    border: 1px solid #cccccc; /* Light border for structure */
+    border-radius: 8px; /* Rounded input corners */
+    transition: border-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .modal-body input:focus {
+    border-color: #4A90E2; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Light blue glow */
+    }
+
+    .modal-footer {
+    border-top: none; /* Remove top border */
+    text-align: right; /* Align buttons to the right */
+    padding-top: 10px; /* Spacing from body */
+    }
+
+    .modal-footer .btn-secondary {
+    background: #bdc3c7; /* Subtle gray for cancel button */
+    color: #333333; /* Dark text for contrast */
+    border: none; /* Remove border */
+    padding: 8px 16px; /* Button padding */
+    border-radius: 8px; /* Rounded button corners */
+    }
+
+    .modal-footer .btn-secondary:hover {
+    background: #95a5a6; /* Darker gray on hover */
     }
 
     .modal-footer .btn-primary {
     background: linear-gradient(to right, #e74c3c, #c0392b); /* Bold red gradient */
-    border: none;
-    color: white;
-    font-weight: bold;
+    color: #ffffff; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 8px; /* Rounded button corners */
+    font-weight: bold; /* Emphasis on primary button */
+    transition: background 0.3s ease; /* Smooth hover effect */
     }
 
     .modal-footer .btn-primary:hover {
-    background: linear-gradient(to right, #d35400, #e67e22); /* Orange gradient on hover */
+    background: linear-gradient(to right, #d35400, #e67e22); /* Orange hover effect */
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+    .modal-dialog {
+        margin: 10px; /* Reduce margin on smaller screens */
+    }
+
+    .modal-header {
+        font-size: 1.2rem; /* Slightly smaller title */
+    }
+
+    .modal-body input {
+        font-size: 0.9rem; /* Smaller input text */
+    }
+      }
 
     /* Footer (if present) */
     footer {
@@ -236,11 +311,34 @@
         height: 150px; /* Adjust for smaller screens */
     }
     }
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 10px;
+
+        
+    }
+    .navbar-logo {
+        display: flex;
+        align-items: center; /* Vertically align the text and image */
+        
+    }
+        
 
       </style>
     
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container-fluid  ">
+          <!-- Logo Image -->
+        <div class="navbar-logo">
+          <img src="./pics/icon.webp" alt="Spoty Logo" style="height: 50px; ;" />
+          <div class="navbar-brand text-white" href="#">Spoty</div>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="row">
         <div class="col-md-6" ></div>

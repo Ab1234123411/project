@@ -13,7 +13,109 @@
             $("#txtMail").val(localStorage.getItem("activeUser")).attr("readonly",true);
       })
   </script>
+  <style>
+    /* General Container Styling */
+.container {
+  background-color: #f8f9fa; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  padding: 20px; /* Inner spacing */
+}
+
+/* Form Labels */
+.form-label {
+  font-size: 1rem; /* Standard size for readability */
+  font-weight: 600; /* Slightly bold for emphasis */
+  color: #343a40; /* Dark text for contrast */
+}
+
+/* Form Input Fields */
+.form-control {
+  border-radius: 5px; /* Smooth corners */
+  border: 1px solid #ced4da; /* Subtle border */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glowing effect */
+}
+
+/* File Upload Styling */
+input[type="file"] {
+  border: 1px solid #ced4da; /* Matches input styling */
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Button Styling */
+button[type="submit"] {
+  background-color: #007bff; /* Primary blue */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff; /* White text */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+/* Header Styling */
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40; /* Dark header */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Aligning Text Center */
+.center-text {
+  text-align: center;
+}
+
+/* Row Gap */
+.row > .col-md-6,
+.row > .col-6 {
+  margin-bottom: 15px; /* Spacing between rows */
+}
+
+/* Form Padding Adjustments */
+form {
+  margin-top: 20px;
+}
+
+.navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 10px;
+
+        
+    }
+    .navbar-logo {
+        display: flex;
+        align-items: center; /* Vertically align the text and image */
+        
+    }
+
+  </style>
+
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <div class="container-fluid  ">
+           <!-- Logo Image -->
+        <div class="navbar-logo">
+          <img src="./pics/icon.webp" alt="Spoty Logo" style="height: 50px; ;" />
+            <div class="navbar-brand text-white" href="#">Spoty</div>
+        </div>
+      </div>
+    </nav>
+
     <center>
       <div class="mt-3">
         <H2>Publish Tournament </H2>

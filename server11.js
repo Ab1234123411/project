@@ -2,7 +2,9 @@ var express=require("express");
 var fileuploader=require("express-fileupload");
 var mysql2=require("mysql2");
 var cloudinary=require("cloudinary").v2;
-var app=express();
+var app=express()
+var nodemailer=require("nodemailer");
+const bodyParser = require("body-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +16,83 @@ app.listen(2003,function(){
 
 app.use(express.static("public"));
 app.use(fileuploader());
+// Middleware for parsing JSON data
+app.use(bodyParser.json());
+
+//nodemailer
+require('dotenv').config();
+var transporter = nodemailer.createTransport({
+    service: "gmail",
+    port: 465,
+    secure: true, // true for port 465, false for other ports
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+    },
+  });
+//---singup----//
+  app.get("/adduser", function (req, resp) {
+    // Extracting data from query parameters
+    const { txtMail: email, txtPwd: password, utype: userType } = req.query;
+    const defaultStatus = 1; // Default status for new users
+
+    // Validate incoming data
+  if (!email || !password || !userType) {
+    return resp.status(400).json({
+      status: "error",
+      message: "All fields (email, password, userType) are required.",
+    });
+  }
+
+  // Insert user into the database
+  mysqlserver.query(
+    "INSERT INTO users (email, password, utype, dos, status) VALUES (?, ?, ?, CURDATE(), ?)",
+    [email, password, userType, defaultStatus],
+    function (err) {
+      if (err) {
+        console.error("Database error:", err.message);
+        return resp.status(500).json({
+          status: "error",
+          message: "Failed to save user to the database.",
+          error: err.message,
+        });
+      }
+
+      // Prepare and send welcome email
+      const mailOptions = {
+        from: '"Arsh Bansal" <arshb6564@gmail.com>',
+        to: email,
+        subject: "Welcome to Our App!",
+        html: `
+          <h3>Hello ${userType || "User"},</h3>
+          <p>Thank you for signing up for our app. We are thrilled to have you with us!</p>
+          <p>If you have any questions, feel free to reach out to us.</p>
+          <br>
+          <p>Best Regards,</p>
+          <p>The Team</p>
+        `,
+      };
+
+      transporter
+        .sendMail(mailOptions)
+        .then(() => {
+          resp.json({
+            status: "Signup successful!",
+            message: "Signup successful!",
+          });
+        })
+        .catch((mailError) => {
+          console.error("Email sending error:", mailError.message);
+          resp.status(500).json({
+            status: "Signup partially successful",
+            message: "User record saved, but email sending failed.",
+            error: mailError.message,
+          });
+        });
+    }
+  );
+});
+
 
 // Configuration
 cloudinary.config({ 
@@ -33,22 +112,7 @@ mysqlserver.connect(function(err){
         console.log(err.message);
     }
 })
-//---singup----//
-app.get("/adduser",function(req,resp){
-    let email=req.query.txtMail;
-    let pwd=req.query.txtPwd;
-    let type=req.query.utype;
-    const defaultStatus = 1;
-  
 
-    mysqlserver.query("INSERT INTO users (email, password, utype, dos, status) VALUES (?, ?, ?, CURDATE(),?)", [email, pwd, type, defaultStatus ], function(err){
-        if(err==null){
-            resp.send("Record saved successfully");
-        }else{
-            resp.send(err.message);
-        }
-    })
-})
 // login ------//
 app.get("/checkuser",function(req,resp){
     let email=req.query.txtEMail;

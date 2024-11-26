@@ -63,6 +63,191 @@
         }
 });
   </script>
+  <style>
+    /* Global body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Light background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the select dropdowns and buttons */
+.center-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for select dropdowns */
+select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 200px;
+  outline: none;
+  transition: 0.3s;
+}
+
+select:focus {
+  border-color: #007bff; /* Focused border color */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Button styling */
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #6c757d; /* Bootstrap secondary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #5a6268; /* Darker hover effect */
+  cursor: pointer;
+}
+
+/* Card styling */
+.card {
+  margin: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Card image styling */
+.card img {
+  width: 100%; /* Ensures the image spans the card width */
+  height: 200px; /* Adjust as per your preference */
+  object-fit: cover; /* Maintains the aspect ratio and fills the space */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/* Card body styling */
+.card-body {
+  text-align: center;
+  padding: 15px;
+}
+
+.card-body h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Modal overall styling */
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Modal Header Styling */
+.modal-header {
+  background-color: #343a40; /* Dark theme for header */
+  color: white; /* White text for contrast */
+  border-bottom: none; /* Remove border */
+  padding: 15px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Modal Body Styling */
+.modal-body {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.modal-body h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+.modal-body img {
+  width: 100%; /* Makes the image responsive */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Footer Styling */
+.modal-footer {
+  background-color: #f8f9fa; /* Matches modal body */
+  border-top: none;
+  padding: 15px;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* For small screens: responsive layout */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px 5px;
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  select {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 90%;
+  }
+}
+  .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-left: 10px;
+
+        
+    }
+    .navbar-logo {
+        display: flex;
+        align-items: center; /* Vertically align the text and image */
+        
+    }
+
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container-fluid  ">
+         <!-- Logo Image -->
+      <div class="navbar-logo">
+        <img src="./pics/icon.webp" alt="Spoty Logo" style="height: 50px; ;" />
+          <div class="navbar-brand text-white" href="#">Spoty</div>
+      </div>
+    </div>
+  </nav>
+
   <body ng-app="kuchmodule" ng-controller="kuchcontroller" ng-init="dofetchcities(); dofetchgames();" >
     <center>
   <div class="container mt-3">
@@ -109,7 +294,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">{{boxObj.game}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
